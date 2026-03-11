@@ -10,50 +10,7 @@ const colorDots = document.querySelectorAll('.color-dot');
 const noteTitle = document.getElementById('note-title');
 const noteText = document.getElementById('note-text');
 
-let notes = JSON.parse(localStorage.getItem('keep-notes')) || [
-    {
-        id: 1,
-        title: "How to write thanks you note",
-        text: "Generate Lorem Ipsum placeholder text select the number of...",
-        color: "#FF4D8D",
-        date: Date.now()
-    },
-    {
-        id: 2,
-        title: "Learn the basics of being an UI Designer",
-        text: "Generate Lorem Ipsum placeholder text select the number of...",
-        color: "#3D6CF4",
-        date: Date.now() - 1000
-    },
-    {
-        id: 3,
-        title: "Learn the basics of being an UI Designer",
-        text: "Generate Lorem Ipsum placeholder text select the number of...",
-        color: "#A855F7",
-        date: Date.now() - 2000
-    },
-    {
-        id: 4,
-        title: "How to write thanks you note",
-        text: "Generate Lorem Ipsum placeholder text select the number of...",
-        color: "#FACC15",
-        date: Date.now() - 3000
-    },
-    {
-        id: 5,
-        title: "How to write thanks you note",
-        text: "Generate Lorem Ipsum placeholder text select the number of...",
-        color: "#22C55E",
-        date: Date.now() - 4000
-    },
-    {
-        id: 6,
-        title: "Learn the basics of being an UI Designer",
-        text: "Generate Lorem Ipsum placeholder text select the number of...",
-        color: "#06B6D4",
-        date: Date.now() - 5000
-    }
-];
+let notes = JSON.parse(localStorage.getItem('keep-notes')) || [];
 
 let selectedColor = "#FF4D8D";
 let editingId = null;
