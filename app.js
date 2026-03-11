@@ -5,6 +5,7 @@ const addNoteBtn = document.getElementById('add-note-btn');
 const noteModal = document.getElementById('note-modal');
 const saveNoteBtn = document.getElementById('save-note');
 const cancelNoteBtn = document.getElementById('cancel-note');
+const deleteNoteBtn = document.getElementById('delete-note');
 const searchInput = document.getElementById('search-input');
 const colorDots = document.querySelectorAll('.color-dot');
 const noteTitle = document.getElementById('note-title');
@@ -45,11 +46,21 @@ addNoteBtn.onclick = () => {
     editingId = null;
     noteTitle.value = '';
     noteText.value = '';
+    deleteNoteBtn.style.display = 'none';
     noteModal.classList.add('active');
 };
 
 cancelNoteBtn.onclick = () => {
     noteModal.classList.remove('active');
+};
+
+deleteNoteBtn.onclick = () => {
+    if (editingId) {
+        notes = notes.filter(n => n.id !== editingId);
+        renderNotes(notes);
+        saveToStorage();
+        noteModal.classList.remove('active');
+    }
 };
 
 saveNoteBtn.onclick = () => {
@@ -88,6 +99,7 @@ function openEditModal(note) {
         dot.classList.toggle('active', dot.dataset.color === selectedColor);
     });
     
+    deleteNoteBtn.style.display = 'block';
     noteModal.classList.add('active');
 }
 

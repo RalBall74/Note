@@ -287,6 +287,15 @@ body {
     color: var(--text-secondary);
 }
 
+#delete-note {
+    background: transparent;
+    color: #EF4444; /* Red color */
+}
+
+#delete-note:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
 #save-note.primary {
     background-color: var(--accent);
     color: white;
