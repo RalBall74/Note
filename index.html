@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keep Note | Modern PWA Notes</title>
+    <meta name="description" content="A beautiful and simple note-taking PWA designed for productivity.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#3D6CF4">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <h1 class="logo">Keep Note</h1>
+            <div class="user-profile">
+                <img src="img/app_icon.png" alt="Profile" id="profile-img">
+            </div>
+        </header>
+
+        <section class="search-section">
+            <div class="search-bar">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search note...">
+                <button class="filter-btn" id="layout-toggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <main class="notes-grid" id="notes-grid">
+            <!-- Notes will be injected here by app.js -->
+        </main>
+
+        <button class="fab" id="add-note-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M5 12H19" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Modal for adding/editing notes -->
+    <div class="modal" id="note-modal">
+        <div class="modal-content">
+            <input type="text" id="note-title" placeholder="Title">
+            <textarea id="note-text" placeholder="Start typing..."></textarea>
+            <div class="modal-footer">
+                <div class="color-picker">
+                    <span class="color-dot active" data-color="#FF4D8D" style="background-color: #FF4D8D;"></span>
+                    <span class="color-dot" data-color="#3D6CF4" style="background-color: #3D6CF4;"></span>
+                    <span class="color-dot" data-color="#A855F7" style="background-color: #A855F7;"></span>
+                    <span class="color-dot" data-color="#FACC15" style="background-color: #FACC15;"></span>
+                    <span class="color-dot" data-color="#22C55E" style="background-color: #22C55E;"></span>
+                </div>
+                <div class="modal-actions">
+                    <button id="cancel-note">Cancel</button>
+                    <button id="save-note" class="primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
